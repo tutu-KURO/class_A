@@ -1,0 +1,47 @@
+ブログに必要なエンドポイント
+
+ニコニコの場合こんな感じ
+
+GET / -　トップページ
+GET / watch/sm* - 動画視聴ページ
+GET / video/new - 動画投稿ページ
+POST /video - 動画投稿
+
+
+ブログ　考え
+
+GET / -　トップページ
+GET / sign up/   新規登録
+GET / login/  ログイン
+GET / profile/   プロフィール
+POST /  article edit/  記事編集ページ
+GET / articles/記事全体
+GET / search/   検索欄
+GET / article/ 記事単体
+GET / comment/   コメント
+GET / logout/  ログアウト
+
+
+
+ブログ　作るやつ
+GET /login
+POST /login
+GET /sign up
+POST /sign up
+DELETE /logout
+
+
+
+
+
+
+
+
+
+
+
+ユーザー
+新規登録
+ログイン
+ログアウト
+
