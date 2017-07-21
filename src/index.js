@@ -40,6 +40,9 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true}));//ここ
 let cookieParser = require('cookie-Parser');
 app.use(cookieParser());
+let methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 
 let mysql =require('mysql');
 let db = mysql.createConnection({
@@ -49,7 +52,17 @@ let db = mysql.createConnection({
   database: "myBlog"
 });
 db.connect();
+let mysqlPromise = require("mysql-promise");
+let dbp = mysqlPromise()
+dbp.configure({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "myBlog"
+}, mysql)
+
 app.locals.db = db;
+app.locals.dbp = dbp;
 
 
 let route = require('./route');
