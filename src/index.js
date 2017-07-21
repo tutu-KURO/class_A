@@ -29,6 +29,13 @@ let path = require('path');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname,'views'));
 
+app.use(express.static(path.join(__dirname,'public')));//これでcssとかもいける
+
+let morgan = require('morgan');
+app.use(morgan('dev'));
+
+
+
 let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true}));//ここ
 let cookieParser = require('cookie-Parser');

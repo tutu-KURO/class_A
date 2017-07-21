@@ -1,13 +1,13 @@
-doctype html
-html
-  head
-    mate(cherset="UTF-8")
-    title 記事一覧
-  body 
+extends layout.pug
+
+block head
+  title 記事一覧
+  //- link(rel="stylesheet" href="/styles/articles.css")
+block content
+  .page-header
     h1 記事一覧
     
-    ul
-
-      each article in articles
-        li
-          a(href="/articles/" + article.id) #{article.title}
+  ul.list-group
+    each article in articles
+      li.list-group-item
+        a(href="/articles/" + article.id) #{article.title}

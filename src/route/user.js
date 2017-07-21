@@ -62,6 +62,18 @@ module.exports = function (app) {
     res.cookie('userID', undefined);
     res.redirect(302,"/login")
   });
+  app.get("/users/:id", function(req,res){
+    let id = req.params.id;
+    app.locals.db.query(
+      "SELECT * FROM `articles` WHERE `user_id` = ? ORDER BY `id` DESC",
+      [id],
+      function(error, results, fields){
+        let articles = results;
+        res.render('articles',{ articles: articles});
+      }
+    )
+  })
+
 }
 function salt() {
 

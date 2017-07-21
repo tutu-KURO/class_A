@@ -1,9 +1,11 @@
-doctype html
-html
-  head
-    mate(cherset="UTF-8")
-    title #{article.title}
-  body 
+extends layout.pug
+block head
+  title ？
+  mate(cherset="UTF-8")
+  //- link(rel="stylesheet" href="/styles/login.css")
+  title #{article.title}
+block body  
+  .page-header
     h1 #{article.title}
-    
-    div #{article.body}
+  
+  div #{article.body}

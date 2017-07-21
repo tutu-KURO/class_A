@@ -13,19 +13,20 @@ module.exports = function(app){
   });
 
 app.get("/articles/new", function(req, res){
-  if(req.cookies.userID){
-    res.render('new_article');
+  if(!req.cookies.userID){
+    res.redirect(302,"/login");
     return;
   }
-  res.redirect(302,"/login");
+  res.render('new_article');
 });
 
 app.post("/articles", function(req, res){
   let title = req.body.title;
   let body = req.body.body;
+  let user_id = req.cookies.userID;
   app.locals.db.query(
-    "INSERT INTO `articles` (`title`,`body`) VALUES (?,?)",
-    [title,body],
+    "INSERT INTO `articles` (`title`,`body`,`user_id`) VALUES (?,?,?)",
+    [title,body,user_id],
     function(error, results, fields){
       let id = results.insertId;
       res.redirect(302,"/articles/" + id);
