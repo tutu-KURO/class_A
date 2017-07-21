@@ -1,5 +1,5 @@
-// var express = require('express');
-// var app = express();
+// let express = require('express');
+// let app = express();
 
 // app.get('/', function (req, res) {
 //   // res.send('Hello World!');
@@ -21,12 +21,29 @@
 //   console.log('Example app listening on port 3000!');
 // });
 
-var express = require('express');
-var app = express();
+
+let express = require('express');
+let app = express();//ここ
 
 let path = require('path');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname,'views'));
+
+let bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true}));//ここ
+let cookieParser = require('cookie-Parser');
+app.use(cookieParser());
+
+let mysql =require('mysql');
+let db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "myBlog"
+});
+db.connect();
+app.locals.db = db;
+
 
 let route = require('./route');
 route(app);

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    mate(cherset="UTF-8")
+    title 新規記事作成
+  body
+    h1 新規記事作成
+    form(action="/articles" method="post")
+      p
+        input(type="text" name="title")
+      p
+        textarea(name="body")
+      p
+        input(type="submit" value="作成")
+      p

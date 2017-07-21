@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    mate(cherset="UTF-8")
+    title 記事一覧
+  body 
+    h1 記事一覧
+    
+    ul
+
+      each article in articles
+        li
+          a(href="/articles/" + article.id) #{article.title}
